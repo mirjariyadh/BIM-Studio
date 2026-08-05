@@ -1,0 +1,318 @@
+/* ==========================================================================
+   ANIMATIONS.CSS - Keyframes, Transitions, Hover & Reveal Animations
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Keyframe Definitions
+   -------------------------------------------------------------------------- */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+@keyframes gridDrift {
+  0% { background-position: 0 0, 0 0; }
+  100% { background-position: 64px 128px, 64px 128px; }
+}
+
+@keyframes scanMove {
+  0%, 100% { top: 12%; opacity: 0; }
+  10% { opacity: 0.6; }
+  50% { top: 78%; opacity: 0.35; }
+  90% { opacity: 0.6; }
+}
+
+@keyframes drift1 {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(14px, -18px); }
+}
+
+@keyframes drift2 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(-10px, 16px) rotate(4deg); }
+}
+
+@keyframes drift3 {
+  0%, 100% { transform: translate(0, 0) rotate(45deg); }
+  50% { transform: translate(10px, 10px) rotate(52deg); }
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes rotateCube {
+  from { transform: rotateX(-24deg) rotateY(0deg); }
+  to { transform: rotateX(-24deg) rotateY(360deg); }
+}
+
+@keyframes floatTag {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes scrollDot {
+  0% { opacity: 1; top: 6px; }
+  70% { opacity: 0; top: 18px; }
+  100% { opacity: 0; top: 6px; }
+}
+
+@keyframes stripeMove {
+  from { background-position: 0 0; }
+  to { background-position: -32px 0; }
+}
+
+/* --------------------------------------------------------------------------
+   2. Active Animation Assignments
+   -------------------------------------------------------------------------- */
+.grid-layer {
+  animation: gridDrift 40s linear infinite;
+}
+
+.scan-line {
+  animation: scanMove 7s ease-in-out infinite;
+}
+
+.shape-slab { animation: drift1 11s ease-in-out infinite; }
+.shape-col  { animation: drift2 13s ease-in-out infinite; }
+.shape-tri  { animation: drift3 9s ease-in-out infinite; }
+.shape-ring { animation: drift1 15s ease-in-out infinite; }
+.shape-dot-grid { animation: drift2 10s ease-in-out infinite; }
+
+.caret {
+  animation: blink 1s step-end infinite;
+}
+
+.cube {
+  animation: rotateCube 18s linear infinite;
+}
+
+.tag-1 { animation: floatTag 5s ease-in-out infinite; }
+.tag-2 { animation: floatTag 6s ease-in-out infinite 0.5s; }
+
+.mouse::before {
+  animation: scrollDot 1.8s ease-in-out infinite;
+}
+
+.fill::after {
+  animation: stripeMove 1.6s linear infinite;
+}
+
+/* Hero Entering Sequence */
+.hero .eyebrow   { animation: fadeUp 0.8s ease both; }
+.hero h1         { animation: fadeUp 0.8s ease 0.08s both; }
+.role-line       { animation: fadeUp 0.8s ease 0.16s both; }
+p.lede           { animation: fadeUp 0.8s ease 0.24s both; }
+.cta-row         { animation: fadeUp 0.8s ease 0.32s both; }
+.meta-row        { animation: fadeUp 0.8s ease 0.40s both; }
+.hero .visual    { animation: fadeUp 1.0s ease 0.30s both; }
+.scroll-cue      { animation: fadeUp 0.8s ease 0.60s both; }
+
+/* --------------------------------------------------------------------------
+   3. Intersection Observer Scroll Reveal States
+   -------------------------------------------------------------------------- */
+.profile-card,
+.about-content p.bio,
+.skill-card,
+.about .timeline-item,
+.featured-card,
+.skill-bar,
+.experience .timeline-card,
+.platform-card,
+.testi-card,
+.contact-info,
+.contact-form {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience .timeline-item.left .timeline-card {
+  transform: translateX(-40px);
+}
+
+.experience .timeline-item.right .timeline-card {
+  transform: translateX(40px);
+}
+
+.about .timeline-item {
+  transform: translateX(-16px);
+}
+
+/* Active In-View Classes */
+.profile-card.in-view,
+.about-content p.bio.in-view,
+.skill-card.in-view,
+.about .timeline-item.in-view,
+.featured-card.in-view,
+.skill-bar.in-view,
+.experience .timeline-item.in-view .timeline-card,
+.platform-card.in-view,
+.testi-card.in-view,
+.contact-info.in-view,
+.contact-form.in-view {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* Timeline Dots Active Highlight */
+.about .timeline-item.in-view .timeline-dot,
+.experience .timeline-item.in-view .timeline-dot {
+  border-color: var(--cyan);
+  box-shadow: 0 0 16px rgba(0, 217, 255, 0.6);
+}
+
+.about .timeline-item.in-view .timeline-dot::after,
+.experience .timeline-item.in-view .timeline-dot::after {
+  background: var(--cyan);
+}
+
+/* --------------------------------------------------------------------------
+   4. Component Hover Animations & Transitions
+   -------------------------------------------------------------------------- */
+.skill-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0, 217, 255, 0.4);
+  box-shadow: 0 16px 40px rgba(0, 217, 255, 0.12);
+}
+
+.skill-card:hover .icon {
+  transform: rotate(-6deg) scale(1.06);
+  background: rgba(0, 217, 255, 0.14);
+}
+
+.testi-card:hover {
+  border-color: rgba(0, 217, 255, 0.35);
+}
+
+.contact-list a {
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.contact-list a:hover {
+  background: rgba(0, 217, 255, 0.06);
+  border-color: rgba(0, 217, 255, 0.25);
+  transform: translateX(4px);
+}
+
+.submit-btn {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 217, 255, 0.25);
+}
+
+.footer-col a:hover {
+  color: var(--cyan);
+  padding-left: 4px;
+}
+
+.footer-social a:hover {
+  background: rgba(0, 217, 255, 0.1);
+  border-color: rgba(0, 217, 255, 0.35);
+  transform: translateY(-3px);
+}
+
+.footer-bottom a:hover {
+  color: var(--cyan);
+}
+
+/* Project Card Hover States */
+.card {
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.card-media img {
+  transition: transform 0.6s cubic-bezier(.16, .84, .44, 1), filter 0.6s ease;
+}
+
+.card:hover .card-media img {
+  transform: scale(1.08);
+  filter: saturate(1.05) brightness(1);
+}
+
+.card-overlay {
+  transition: opacity 0.4s ease;
+}
+
+.card:hover .card-overlay {
+  opacity: 1;
+}
+
+.view-btn {
+  transform: translateY(14px);
+  transition: transform 0.4s ease, background 0.3s ease;
+}
+
+.card:hover .view-btn {
+  transform: translateY(0);
+}
+
+.view-btn:hover {
+  background: rgba(0, 217, 255, 0.18);
+}
+
+/* Card Hiding Animation State for Filtering */
+.card.hide {
+  opacity: 0;
+  transform: scale(0.92);
+  height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  pointer-events: none;
+  position: absolute;
+  visibility: hidden;
+}
+
+/* Modal Animation States */
+.modal-backdrop {
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.modal-backdrop.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal {
+  transform: translateY(24px) scale(0.97);
+  transition: transform 0.4s cubic-bezier(.16, .84, .44, 1);
+}
+
+.modal-backdrop.open .modal {
+  transform: translateY(0) scale(1);
+}
+
+.modal-close {
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.modal-close:hover {
+  background: rgba(255, 90, 90, 0.18);
+  transform: rotate(90deg);
+}
+
+.modal-thumb {
+  transition: opacity 0.25s ease, border-color 0.25s ease;
+}
+
+.modal-thumb:hover {
+  opacity: 0.85;
+}
+
+.modal-link {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.modal-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(0, 217, 255, 0.25);
+}

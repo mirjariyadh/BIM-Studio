@@ -1,0 +1,381 @@
+/* ==========================================================================
+   STYLE.CSS - Global Styles, Variables, Typography & Base Layout
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. CSS Custom Properties / Design Tokens
+   -------------------------------------------------------------------------- */
+:root {
+  --bg-0: #0A0E17;
+  --bg-1: #101625;
+  --line: rgba(148, 163, 184, 0.10);
+  --line-strong: rgba(148, 163, 184, 0.22);
+  --cyan: #00D9FF;
+  --amber: #FF9F43;
+  --text-0: #F1F5F9;
+  --text-1: #94A3B8;
+  --glass: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* --------------------------------------------------------------------------
+   2. Base Reset & Document Setup
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  background-color: var(--bg-0);
+  color: var(--text-0);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg-0);
+  color: var(--text-0);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--cyan);
+  color: #001018;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* --------------------------------------------------------------------------
+   3. Accessibility & Utility Classes
+   -------------------------------------------------------------------------- */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 20px;
+  background: var(--cyan);
+  color: #04121a;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 700;
+  z-index: 1000;
+  transition: top 0.25s ease;
+}
+
+.skip-link:focus {
+  top: 20px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --------------------------------------------------------------------------
+   4. Typography
+   -------------------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--text-0);
+  line-height: 1.1;
+}
+
+.accent {
+  background: linear-gradient(100deg, var(--cyan), #7dd3fc 60%, var(--cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.accent-amber {
+  background: linear-gradient(100deg, var(--amber), #ffcb8f 60%, var(--amber));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  letter-spacing: 0.14em;
+  color: var(--cyan);
+  background: rgba(0, 217, 255, 0.06);
+  border: 1px solid rgba(0, 217, 255, 0.25);
+  padding: 7px 14px 7px 10px;
+  border-radius: 999px;
+  margin-bottom: 22px;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cyan);
+  flex-shrink: 0;
+}
+
+.eyebrow.amber {
+  color: var(--amber);
+  background: rgba(255, 159, 67, 0.06);
+  border-color: rgba(255, 159, 67, 0.28);
+}
+
+.eyebrow.amber::before {
+  background: var(--amber);
+}
+
+.section-head {
+  max-width: 640px;
+  margin-bottom: 64px;
+}
+
+.section-head.centered {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.section-head h2 {
+  font-weight: 700;
+  font-size: clamp(32px, 4vw, 48px);
+  letter-spacing: -0.02em;
+}
+
+.section-head p {
+  margin-top: 18px;
+  color: var(--text-1);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* --------------------------------------------------------------------------
+   5. Section Outer Containers & Backgrounds
+   -------------------------------------------------------------------------- */
+.hero,
+.about,
+.skills,
+.experience,
+.projects,
+.testimonials,
+.contact {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about,
+.skills,
+.experience,
+.projects,
+.testimonials {
+  padding: 120px 32px 140px;
+}
+
+.contact {
+  padding: 100px 32px 120px;
+}
+
+/* Inner constraints */
+.hero-inner,
+.about-inner,
+.skills-inner,
+.experience-inner,
+.projects-inner,
+.testimonials .inner,
+.contact .inner,
+.footer-inner {
+  position: relative;
+  max-width: 1240px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.experience-inner {
+  max-width: 1100px;
+}
+
+.projects-inner {
+  max-width: 1280px;
+}
+
+.testimonials .inner {
+  max-width: 1200px;
+}
+
+/* Background Gradients */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 78% 30%, rgba(0, 217, 255, 0.10), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 15% 80%, rgba(255, 159, 67, 0.06), transparent 60%),
+    linear-gradient(180deg, var(--bg-0) 0%, var(--bg-1) 100%);
+  z-index: -3;
+}
+
+.about::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 45% at 12% 15%, rgba(255, 159, 67, 0.07), transparent 60%),
+    radial-gradient(ellipse 50% 45% at 90% 80%, rgba(0, 217, 255, 0.08), transparent 60%),
+    var(--bg-0);
+  z-index: -2;
+}
+
+.skills::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 45% at 88% 12%, rgba(0, 217, 255, 0.08), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 8% 85%, rgba(255, 159, 67, 0.06), transparent 60%),
+    var(--bg-0);
+  z-index: -2;
+}
+
+.experience::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 40% at 12% 10%, rgba(0, 217, 255, 0.07), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 92% 90%, rgba(255, 159, 67, 0.06), transparent 60%),
+    var(--bg-0);
+  z-index: -2;
+}
+
+.projects::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 40% at 90% 8%, rgba(255, 159, 67, 0.06), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 5% 90%, rgba(0, 217, 255, 0.08), transparent 60%),
+    var(--bg-0);
+  z-index: -2;
+}
+
+.testimonials::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 40% at 85% 10%, rgba(0, 217, 255, 0.08), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 10% 90%, rgba(255, 159, 67, 0.06), transparent 60%),
+    var(--bg-0);
+  z-index: -2;
+}
+
+.contact::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 50% 40% at 10% 15%, rgba(255, 159, 67, 0.07), transparent 60%),
+    radial-gradient(ellipse 55% 45% at 90% 85%, rgba(0, 217, 255, 0.09), transparent 60%),
+    var(--bg-1);
+  z-index: -2;
+}
+
+/* Background Grids */
+.grid-layer,
+.about-grid-bg,
+.skills-grid-bg,
+.experience-grid-bg,
+.projects-grid-bg,
+.testimonials .grid-bg {
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.grid-layer {
+  mask-image: radial-gradient(ellipse 85% 75% at 60% 40%, #000 40%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 75% at 60% 40%, #000 40%, transparent 85%);
+}
+
+.about-grid-bg {
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 10%, #000 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 10%, #000 30%, transparent 80%);
+}
+
+.skills-grid-bg {
+  mask-image: radial-gradient(ellipse 70% 55% at 50% 0%, #000 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 55% at 50% 0%, #000 30%, transparent 80%);
+}
+
+.experience-grid-bg {
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 30%, transparent 80%);
+}
+
+.projects-grid-bg {
+  mask-image: radial-gradient(ellipse 75% 60% at 50% 0%, #000 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 60% at 50% 0%, #000 30%, transparent 80%);
+}
+
+.testimonials .grid-bg {
+  mask-image: radial-gradient(ellipse 75% 55% at 50% 0%, #000 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 55% at 50% 0%, #000 30%, transparent 80%);
+}

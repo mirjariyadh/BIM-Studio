@@ -1,0 +1,352 @@
+/* ==========================================================================
+   RESPONSIVE.CSS - Media Queries, Breakpoints & Accessibility Overrides
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Large Tablet / Laptop (Max-width: 980px / 900px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 980px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    padding: 130px 24px 100px;
+    text-align: left;
+  }
+
+  .visual {
+    height: 320px;
+    order: -1;
+    opacity: 0.55;
+    margin-bottom: -40px;
+  }
+
+  .scene {
+    width: 200px;
+    height: 200px;
+  }
+
+  .face {
+    width: 200px;
+    height: 200px;
+  }
+
+  .face-front, .face-back, .face-right, .face-left, .face-top, .face-bottom {
+    transform: translateZ(100px);
+  }
+
+  .face-back   { transform: rotateY(180deg) translateZ(100px); }
+  .face-right  { transform: rotateY(90deg) translateZ(100px); }
+  .face-left   { transform: rotateY(-90deg) translateZ(100px); }
+  .face-top    { transform: rotateX(90deg) translateZ(100px); }
+  .face-bottom { transform: rotateX(-90deg) translateZ(100px); }
+
+  .tag {
+    display: none;
+  }
+
+  .meta-row {
+    gap: 24px;
+  }
+
+  .projects .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .platform-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .testi-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-card {
+    position: relative;
+    top: 0;
+  }
+
+  .about .cards-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .skills-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-card {
+    padding: 32px 24px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. Tablet & Mobile Medium (Max-width: 780px / 640px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 780px) {
+  .experience .timeline-spine,
+  .experience .timeline-progress {
+    left: 20px;
+    transform: none;
+  }
+
+  .experience .timeline-item {
+    grid-template-columns: 40px 1fr;
+    margin-bottom: 44px;
+  }
+
+  .experience .timeline-node {
+    grid-column: 1;
+    padding-top: 2px;
+  }
+
+  .experience .timeline-item.left .timeline-card,
+  .experience .timeline-item.right .timeline-card {
+    grid-column: 2;
+    text-align: left;
+    transform: translateX(24px);
+  }
+
+  .experience .timeline-item.in-view .timeline-card {
+    transform: translateX(0);
+  }
+
+  .experience .timeline-item.left .tags,
+  .experience .timeline-item.left .card-meta {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .about,
+  .skills,
+  .experience,
+  .projects,
+  .testimonials {
+    padding: 90px 20px 100px;
+  }
+
+  .about .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about .timeline-track {
+    padding-left: 36px;
+  }
+
+  .about .timeline-track::before,
+  .about .timeline-progress {
+    left: 9px;
+  }
+
+  .about .timeline-dot {
+    left: -36px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .about-grid {
+    gap: 24px;
+    margin-bottom: 72px;
+  }
+
+  .timeline-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .projects .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-bar {
+    gap: 8px;
+  }
+
+  .filter-btn {
+    padding: 9px 16px;
+    font-size: 12.5px;
+  }
+
+  .modal-body {
+    padding: 20px;
+  }
+
+  .modal-body h3 {
+    font-size: 21px;
+  }
+
+  .modal-thumbs {
+    padding: 14px 20px 0;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   3. Mobile Small (Max-width: 560px / 480px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 560px) {
+  .nav {
+    padding: 20px;
+  }
+
+  .nav-status span.txt {
+    display: none;
+  }
+
+  .hero-inner {
+    padding: 110px 20px 90px;
+  }
+
+  .hero h1 {
+    font-size: clamp(32px, 9vw, 44px);
+  }
+
+  p.lede {
+    font-size: 15px;
+  }
+
+  .cta-row {
+    gap: 12px;
+  }
+
+  .btn {
+    padding: 14px 20px;
+    font-size: 13.5px;
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+
+  .meta-row {
+    margin-top: 42px;
+    gap: 20px 26px;
+  }
+
+  .visual {
+    height: 230px;
+  }
+
+  .scene {
+    width: 150px;
+    height: 150px;
+  }
+
+  .face {
+    width: 150px;
+    height: 150px;
+  }
+
+  .face-front, .face-back, .face-right, .face-left, .face-top, .face-bottom {
+    transform: translateZ(75px);
+  }
+
+  .face-back   { transform: rotateY(180deg) translateZ(75px); }
+  .face-right  { transform: rotateY(90deg) translateZ(75px); }
+  .face-left   { transform: rotateY(-90deg) translateZ(75px); }
+  .face-top    { transform: rotateX(90deg) translateZ(75px); }
+  .face-bottom { transform: rotateX(-90deg) translateZ(75px); }
+
+  .bars-panel {
+    padding: 26px 20px;
+    gap: 22px;
+  }
+
+  .skill-bar-name .icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .ring-wrap {
+    width: 160px;
+    height: 160px;
+  }
+
+  .ring-center .pct {
+    font-size: 32px;
+  }
+
+  .contact {
+    padding: 80px 20px 100px;
+  }
+
+  .contact-info,
+  .contact-form {
+    padding: 26px;
+  }
+
+  .form-two-col {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .site-footer {
+    padding: 48px 20px 24px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .experience {
+    padding: 90px 20px 100px;
+  }
+
+  .experience .section-head {
+    margin-bottom: 56px;
+  }
+
+  .timeline-card {
+    padding: 20px;
+  }
+
+  .timeline-card h3 {
+    font-size: 17px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. Accessibility Focus States & Motion Preferences
+   -------------------------------------------------------------------------- */
+.btn:focus-visible,
+.filter-btn:focus-visible,
+.modal-close:focus-visible,
+.modal-link:focus-visible,
+.submit-btn:focus-visible,
+.footer-social a:focus-visible,
+.contact-list a:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+}
+
+input:focus-visible,
+textarea:focus-visible {
+  outline: none;
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 4px rgba(0, 217, 255, 0.12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
